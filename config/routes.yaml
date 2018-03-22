@@ -1,0 +1,11 @@
+index:
+    path: /
+    defaults: { _controller: 'App\Controller\DefaultController::index' }
+api:
+    path: /algo
+    defaults: { _controller: 'App\Controller\DefaultController::apiAction' }
+    methods: GET
+app.swagger_ui:
+    path: /api/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

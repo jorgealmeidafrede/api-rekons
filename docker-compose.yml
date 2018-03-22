@@ -1,0 +1,32 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: api-rekons
+    ports:
+      - '8080:80'
+      - '9443:443'
+    expose:
+      - "8080"
+      - "80"
+    volumes:
+      - .docker/docker-php.ini:/usr/local/etc/php/conf.d/docker-php.ini
+      - .:/var/www/html/
+  dbf:
+    container_name: api-rekons
+    image: mysql:latest
+    ports:
+      - 23306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aitor2014
+      MYSQL_DATABASE: orders_management_Rekons
+      MYSQL_USER: root
+      MYSQL_PASSWORD: aitor2014
+    volumes:
+      - primera:/var/lib/mysql
+volumes:
+  primera:
+
